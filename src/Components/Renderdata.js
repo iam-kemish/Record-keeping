@@ -4,8 +4,11 @@ const Renderdata = (props) => {
   return (
     <div>
       <div className="cont">
-        <h5><strong>Name:</strong> {props.name}</h5>
-        <h5><strong>Email:</strong> {props.email}</h5>
+        <h6><strong>Name:</strong> {props.name}</h6>
+        <h6><strong>Email:</strong> {props.email}</h6>
+        <h6><strong>{props.removeData}</strong> </h6>
+
+      
       </div>
     </div>
   );

@@ -4,11 +4,12 @@ import Renderdata from "./Renderdata";
 function Textuse() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
   const [data, setData] = useState([]);
   const Adddata = () => {
-    if(!name || !email) {
-        alert("Enter something first")
-        return;
+    if (!name || !email) {
+      alert("Enter something first");
+      return;
     }
     setData([
       ...data,
@@ -20,14 +21,12 @@ function Textuse() {
     setName("");
     setEmail("");
   };
-  const Removedata = () => {
-    setData([
-        {
-            name: "",
-            email: ""
-        }
-    ])
+  const removeData =(index) => {
+    let arr = data;
+    arr.splice(index, 1)
+  setData([...arr])
   }
+
   return (
     <div>
       <div className="row">
@@ -48,19 +47,25 @@ function Textuse() {
             placeholder="Email?"
             aria-label="Last name"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value )}
           />
         </div>
       </div>
-      <button type="button" className="btn btn-danger my-3" onClick={Adddata}>
+      <button type="button" className="btn btn-success my-3" onClick={Adddata}>
         Submit
       </button>
-      <button type="button" className="btn btn-primary " style={{marginLeft: "6px"}} onClick={Removedata}>
-        Remove Data
-      </button>
+
       {data.map((element, index) => {
         return (
-          <Renderdata name={element.name} email={element.email} index={index} key={index} />
+          <>
+            <Renderdata
+              name={element.name}
+              email={element.email}
+              index={index}
+              key={index}
+            />
+            <button className="btn btn-danger my-3" onClick={()=> removeData(index)}>RemoveData</button>
+          </>
         );
       })}
     </div>
