@@ -21,6 +21,12 @@ function Textuse() {
     setName("");
     setEmail("");
   };
+  const handlePress =(e) =>{
+    if(e.key === "Enter") {
+      Adddata();
+    }
+  
+  }
   const removeData =(index) => {
     let arr = data;
     arr.splice(index, 1)
@@ -32,6 +38,7 @@ function Textuse() {
       <div className="row">
         <div>
           <input
+            onKeyPress={handlePress}
             type="text"
             className="form-control"
             placeholder="Fullname?"
@@ -42,6 +49,7 @@ function Textuse() {
         </div>
         <div className="my-3">
           <input
+          onKeyPress={handlePress}
             type="text"
             className="form-control"
             placeholder="Email?"
